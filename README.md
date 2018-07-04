@@ -1,85 +1,75 @@
-<div align="center">
-<img src="docs/mace-logo.png" width="400" alt="MACE" />
-</div>
+# atom-ide-ui &middot; [![Package version](https://img.shields.io/apm/v/atom-ide-ui.svg)](https://atom.io/packages/atom-ide-ui) [![CircleCI](https://img.shields.io/circleci/project/github/facebook-atom/atom-ide-ui.svg)](https://circleci.com/gh/facebook-atom/atom-ide-ui)
 
+Atom UIs to support language services and debuggers as part of Atom IDE.
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
-[![pipeline status](https://gitlab.com/llhe/mace/badges/master/pipeline.svg)](https://gitlab.com/llhe/mace/pipelines)
-[![doc build status](https://readthedocs.org/projects/mace/badge/?version=latest)](https://readthedocs.org/projects/mace/badge/?version=latest)
+Language integrations should be built on top of
+[atom-languageclient](https://github.com/atom/atom-languageclient).
 
-[Documentation](https://mace.readthedocs.io) |
-[FAQ](https://mace.readthedocs.io/en/latest/faq.html) |
-[Release Notes](RELEASE.md) |
-[Roadmap](ROADMAP.md) |
-[MACE Model Zoo](https://github.com/XiaoMi/mace-models) |
-[Demo](mace/examples/android) |
-[中文](README_zh.md)
+![Screenshot](https://raw.githubusercontent.com/facebook-atom/atom-ide-ui/master/docs/images/screenshot.png)
 
-**Mobile AI Compute Engine** (or **MACE** for short) is a deep learning inference framework optimized for
-mobile heterogeneous computing platforms. The design focuses on the following
-targets:
-* Performance
-  * Runtime is optimized with NEON, OpenCL and Hexagon, and
-    [Winograd algorithm](https://arxiv.org/abs/1509.09308) is introduced to
-    speed up convolution operations. The initialization is also optimized to be faster.
-* Power consumption
-  * Chip dependent power options like big.LITTLE scheduling, Adreno GPU hints are
-    included as advanced APIs.
-* Responsiveness
-  * UI responsiveness guarantee is sometimes obligatory when running a model.
-    Mechanism like automatically breaking OpenCL kernel into small units is
-    introduced to allow better preemption for the UI rendering task.
-* Memory usage and library footprint
-  * Graph level memory allocation optimization and buffer reuse are supported.
-    The core library tries to keep minimum external dependencies to keep the
-    library footprint small.
-* Model protection
-  * Model protection has been the highest priority since the beginning of 
-    the design. Various techniques are introduced like converting models to C++
-    code and literal obfuscations.
-* Platform coverage
-  * Good coverage of recent Qualcomm, MediaTek, Pinecone and other ARM based
-    chips. CPU runtime is also compatible with most POSIX systems and
-    architectures with limited performance.
+Debugger integrations should be modeled after [atom-ide-debugger-node](https://atom.io/packages/atom-ide-debugger-node).
+
+![Screenshot](https://raw.githubusercontent.com/facebook-atom/atom-ide-ui/master/docs/images/debugger.png)
+
+Contributions are welcome! File bugs and feature requests from the issues page,
+or read the [CONTRIBUTING.md](https://github.com/facebook-atom/atom-ide-ui/blob/master/CONTRIBUTING.md)
+file for details on how to submit a pull request.
 
 ## Getting Started
-* [Introduction](https://mace.readthedocs.io/en/latest/getting_started/introduction.html)
-* [Create a model deployment file](https://mace.readthedocs.io/en/latest/getting_started/create_a_model_deployment.html)
-* [How to build](https://mace.readthedocs.io/en/latest/getting_started/how_to_build.html)
 
-## Performance
-[MACE Model Zoo](https://github.com/XiaoMi/mace-models) contains
-several common neural networks and models which will be built daily against a list of mobile
-phones. The benchmark results can be found in [the CI result page](https://gitlab.com/llhe/mace-models/pipelines)
-(choose the latest passed pipeline, click *release* step and you will see the benchmark results).
+First, make sure you have Atom 1.19+ installed.
+Install `atom-ide-ui` from "Install" in Atom's settings or run:
 
-## Communication
-* GitHub issues: bug reports, usage issues, feature requests
-* Mailing list: [mace-users@googlegroups.com](mailto:mace-users@googlegroups.com)
-* Google Groups: https://groups.google.com/forum/#!forum/mace-users
-* QQ群: 756046893
+```
+apm install atom-ide-ui
+```
 
-## Contributing
-Any kind of contribution is welcome. For bug reports, feature requests,
-please just open an issue without any hesitation. For code contributions, it's
-strongly suggested to open an issue for discussion first. For more details,
-please refer to [the contribution guide](https://mace.readthedocs.io/en/latest/development/contributing.html).
+You'll also want to install a suitable language package and/or debugger package since `atom-ide-ui` doesn't provide any language or debugger support by default.
+
+Language support packages based on https://github.com/atom/atom-languageclient should work out of the box with `atom-ide-ui` installed, such as:
+
+* [ide-csharp](https://github.com/atom/ide-csharp)
+* [ide-flowtype](https://github.com/flowtype/ide-flowtype)
+* [ide-java](https://github.com/atom/ide-java)
+* [ide-php](https://github.com/atom/ide-php)
+* [ide-typescript](https://github.com/atom/ide-typescript)
+* [and more...](https://github.com/atom/atom-languageclient/wiki/List-of-Atom-packages-using-Atom-LanguageClient)
+
+These debugger packages should work out of the box:
+* [Node Debugger](https://atom.io/packages/atom-ide-debugger-node)
+* [Python Debugger](https://atom.io/packages/atom-ide-debugger-python)
+* [React Native Debugger]( https://atom.io/packages/atom-ide-debugger-react-native)
+* [C/C++ GDB Debugger]( https://atom.io/packages/atom-ide-debugger-native-gdb)
+* [OCaml Debugger]( https://atom.io/packages/atom-ide-debugger-ocaml)
+
+## Language Features
+
+Check out the documentation pages for more information about each feature!
+
+- [Busy Signal](https://github.com/facebook-atom/atom-ide-ui/blob/master/docs/busy-signal.md)
+- [Code Actions](https://github.com/facebook-atom/atom-ide-ui/blob/master/docs/code-actions.md)
+- [Code Format](https://github.com/facebook-atom/atom-ide-ui/blob/master/docs/code-format.md)
+- [Code Highlight](https://github.com/facebook-atom/atom-ide-ui/blob/master/docs/code-highlight.md)
+- [Console](https://github.com/facebook-atom/atom-ide-ui/blob/master/docs/console.md)
+- [Datatips](https://github.com/facebook-atom/atom-ide-ui/blob/master/docs/datatips.md)
+- [Definitions (plus Hyperclick)](https://github.com/facebook-atom/atom-ide-ui/blob/master/docs/definitions.md)
+- [Diagnostics](https://github.com/facebook-atom/atom-ide-ui/blob/master/docs/diagnostics.md)
+- [Find References](https://github.com/facebook-atom/atom-ide-ui/blob/master/docs/find-references.md)
+- [Outline](https://github.com/facebook-atom/atom-ide-ui/blob/master/docs/outline-view.md)
+- [Signature Help (Experimental/WIP)](https://github.com/facebook-atom/atom-ide-ui/blob/master/docs/signature-help.md)
+
+## Debugger Features
+- [Launch/Attach UI](https://github.com/facebook-atom/atom-ide-ui/blob/master/docs/debugger-launch-attach-ui.md)
+- [Breakpoints + conditional](https://github.com/facebook-atom/atom-ide-ui/blob/master/docs/debugger-breakpoints.md)
+- [Stepping (Pause, Continue, Step, Restart)](https://github.com/facebook-atom/atom-ide-ui/blob/master/docs/debugger-controls.md)
+- [Threads (Running, Focus)](https://github.com/facebook-atom/atom-ide-ui/blob/master/docs/debugger-threads.md)
+- [Stacktraces & in-memory source views](https://github.com/facebook-atom/atom-ide-ui/blob/master/docs/debugger-stacktraces.md)
+- [Scopes & editable variables views](https://github.com/facebook-atom/atom-ide-ui/blob/master/docs/debugger-scopes.md)
+- [Watch expressions](https://github.com/facebook-atom/atom-ide-ui/blob/master/docs/debugger-watch-expressions.md)
+- [Console + Repl](https://github.com/facebook-atom/atom-ide-ui/blob/master/docs/debugger-console.md)
+
+See [Keybindings](https://github.com/facebook-atom/atom-ide-ui/blob/master/docs/keybindings.md) for a list of default keybindings.
 
 ## License
-[Apache License 2.0](LICENSE).
 
-## Acknowledgement
-MACE depends on several open source projects located in the
-[third_party](third_party) directory. Particularly, we learned a lot from
-the following projects during the development:
-* [Qualcomm Hexagon NN Offload Framework](https://source.codeaurora.org/quic/hexagon_nn/nnlib): the Hexagon DSP runtime
-  depends on this library.
-* [TensorFlow](https://github.com/tensorflow/tensorflow),
-  [Caffe](https://github.com/BVLC/caffe),
-  [SNPE](https://developer.qualcomm.com/software/snapdragon-neural-processing-engine-ai),
-  [ARM ComputeLibrary](https://github.com/ARM-software/ComputeLibrary),
-  [ncnn](https://github.com/Tencent/ncnn) and many others: we learned many best
-  practices from these projects.
-
-Finally, we also thank the Qualcomm, Pinecone and MediaTek engineering teams for
-their help.
+`atom-ide-ui` is BSD-licensed. We also provide an additional patent grant.
